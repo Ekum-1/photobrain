@@ -25,25 +25,36 @@ class Form extends React.Component {
 
 	render () {
 		const { fieldName, fieldEmail, fieldPassword } = this.state;
+		const { route, onRouteChange, loadUser } = this.props;
 		return(
 			<div>
-				<Signin 
-				fieldEmail={fieldEmail}
-				fieldPassword={fieldPassword}
-				onEmailChange={this.onEmailChange}
-				onPasswordChange={this.onPasswordChange}
-				endpoint='http://localhost:3000/signin'
-				loadUser={this.props.loadUser}
-				onRouteChange={this.props.onRouteChange}
-				/>
-			</div>
+				{ route === 'signin' ? (
+					<Signin 
+					fieldEmail={fieldEmail}
+					fieldPassword={fieldPassword}
+					onEmailChange={this.onEmailChange}
+					onPasswordChange={this.onPasswordChange}
+					endpoint='http://localhost:3000/signin'
+					loadUser={loadUser}
+					onRouteChange={onRouteChange}
+					/>
+				) : (
+					<Register
+					fieldName={fieldName}
+					fieldEmail={fieldEmail}
+					fieldPassword={fieldPassword}
+					onNameChange={this.onNameChange}
+					onEmailChange={this.onEmailChange}
+					onPasswordChange={this.onPasswordChange}
+					endpoint='http://localhost:3000/register'
+					loadUser={loadUser}
+					onRouteChange={onRouteChange}
+					/>
+				)
+			}
+		</div>
 		)
 	}
 }
-
-
-
-
-
 
 export default Form;

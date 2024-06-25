@@ -2,8 +2,6 @@ import React, { Component } from 'react';
 import ParticlesBg from 'particles-bg';
 import Form from './components/Form/Form';
 import Navigation from './components/Navigation/Navigation';
-import Signin from './components/Signin/Signin';
-import Register from './components/Register/Register';
 import Logo from './components/Logo/Logo';
 import Rank from './components/Rank/Rank';
 import ImageLinkForm from './components/ImageLinkForm/ImageLinkForm';
@@ -157,9 +155,7 @@ class App extends Component {
                 <FaceRecognition faceBoxes={faceBoxes} imageUrl={imageUrl}/>
               </div>
             : (
-                route === 'signin'
-                 ? <Signin loadUser={this.loadUser} onRouteChange={this.onRouteChange}/>
-                  : <Register loadUser={this.loadUser} onRouteChange={this.onRouteChange}/>
+                <Form route={route} loadUser={this.loadUser} onRouteChange={this.onRouteChange}/>
               )
             }
       </div>
