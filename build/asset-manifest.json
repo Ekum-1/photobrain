@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/photobrain/static/css/main.41924626.css",
+    "main.js": "/photobrain/static/js/main.6d51017f.js",
+    "static/js/453.8e1789bd.chunk.js": "/photobrain/static/js/453.8e1789bd.chunk.js",
+    "index.html": "/photobrain/index.html",
+    "main.41924626.css.map": "/photobrain/static/css/main.41924626.css.map",
+    "main.6d51017f.js.map": "/photobrain/static/js/main.6d51017f.js.map",
+    "453.8e1789bd.chunk.js.map": "/photobrain/static/js/453.8e1789bd.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.41924626.css",
+    "static/js/main.6d51017f.js"
+  ]
+}
