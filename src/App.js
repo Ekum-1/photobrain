@@ -8,44 +8,6 @@ import ImageLinkForm from './components/ImageLinkForm/ImageLinkForm';
 import FaceRecognition from './components/FaceRecognition/FaceRecognition';
 import './App.css';
 
-
-const returnClarifaiRequestOptions = (imageUrl) => {
-  const PAT = 'b938cfb94a2d47f0b7603c7242c41729';
-  const USER_ID = 'ejisadev19';       
-  const APP_ID = 'my-first-application-zy4wsp';
-
-  // const MODEL_ID = 'face-detection';  
-  const IMAGE_URL = imageUrl;
-
-  const raw = JSON.stringify({
-    "user_app_id": {
-        "user_id": USER_ID,
-        "app_id": APP_ID
-    },
-    "inputs": [
-        {
-            "data": {
-                "image": {
-                    "url": IMAGE_URL
-                }
-            }
-        }
-    ]
-});
-
-const requestOptions = {
-    method: 'POST',
-    headers: {
-        'Accept': 'application/json',
-        'Authorization': 'Key ' + PAT
-    },
-    body: raw
-  };
-
-  return requestOptions;
-
-}
-
 const initialState = {
     input: ``,
     imageUrl: ``,
@@ -84,12 +46,19 @@ class App extends Component {
   onPictureSubmit = () => {
     this.setState({imageUrl: this.state.input});
     // eslint-disable-next-line no-useless-concat
-    fetch("https://api.clarifai.com/v2/models/" + 'face-detection' + "/outputs", returnClarifaiRequestOptions(this.state.input))
+    // fetch("https://api.clarifai.com/v2/models/" + 'face-detection' + "/outputs", returnClarifaiRequestOptions(this.state.input))
+    fetch('https://photobrain-backend.onrender.com/imageurl', {
+      method: 'post',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify({
+        input: this.state.input,
+      })
+    })
     .then(response => response.json())
     .then(result => {
 
       if(result) {
-        fetch('http://localhost:3000/image', {
+        fetch('https://photobrain-backend.onrender.com/image', {
           method: 'put',
           headers: {'Content-Type': 'application/json'},
           body: JSON.stringify({
@@ -102,7 +71,8 @@ class App extends Component {
         })
         .catch(console.log)
       }
-
+      
+      // console.log(result)
       const regions = result.outputs[0].data.regions;
 
       const faceBoxes = regions.map(region => {

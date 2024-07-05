@@ -34,7 +34,7 @@ class Form extends React.Component {
 					fieldPassword={fieldPassword}
 					onEmailChange={this.onEmailChange}
 					onPasswordChange={this.onPasswordChange}
-					endpoint='http://localhost:3000/signin'
+					endpoint='https://photobrain-backend.onrender.com/signin'
 					loadUser={loadUser}
 					onRouteChange={onRouteChange}
 					/>
@@ -46,7 +46,7 @@ class Form extends React.Component {
 					onNameChange={this.onNameChange}
 					onEmailChange={this.onEmailChange}
 					onPasswordChange={this.onPasswordChange}
-					endpoint='http://localhost:3000/register'
+					endpoint='https://photobrain-backend.onrender.com/register'
 					loadUser={loadUser}
 					onRouteChange={onRouteChange}
 					/>
